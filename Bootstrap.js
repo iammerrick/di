@@ -19,6 +19,11 @@ diContainer.config({
       "tweeter": require("./LeetSpeekTweeter-not-shown")
     }
   }
+}, {
+  // Containers can fall through to parent providers, if tweeter isn't resolved in this container,
+  // check in other-container, if its not there check in another-fallthrough-container. Consider
+  // how node_modules are resolved.
+  containers: [require('other-container'), require('another-fallthrough-container')]
 });
 
 // Construct the entire object graph, using above declarative config.
